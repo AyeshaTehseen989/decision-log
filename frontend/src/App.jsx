@@ -19,7 +19,7 @@ export default function App() {
     try {
       setDecisions(await listDecisions());
       setError("");
-    } catch (err) {
+    } catch {
       setError("Could not load decisions. Is the backend running?");
     } finally {
       setLoading(false);
@@ -27,7 +27,25 @@ export default function App() {
   }
 
   useEffect(() => {
-    refresh();
+    let active = true;
+    listDecisions()
+      .then((data) => {
+        if (active) {
+          setDecisions(data);
+          setError("");
+        }
+      })
+      .catch(() => {
+        if (active) {
+          setError("Could not load decisions. Is the backend running?");
+        }
+      })
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+    return () => {
+      active = false;
+    };
   }, []);
 
   async function handleCreate(data) {
