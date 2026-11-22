@@ -19,3 +19,15 @@ export const listDecisions = () => request("/decisions");
 
 export const createDecision = (data) =>
   request("/decisions", { method: "POST", body: JSON.stringify(data) });
+
+export const updateStatus = (id, status) =>
+  request(`/decisions/${id}/status`, {
+    method: "PATCH",
+    body: JSON.stringify({ status }),
+  });
+
+export const supersedeDecision = (id, data) =>
+  request(`/decisions/${id}/supersede`, {
+    method: "POST",
+    body: JSON.stringify(data),
+  });

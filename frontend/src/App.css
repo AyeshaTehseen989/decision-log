@@ -10,3 +10,8 @@
 .badge.accepted { background: #d4f4dd; }
 .badge.superseded { background: #f4d4d4; }
 .error { color: #b00020; }
+.actions { display: flex; gap: 8px; margin-top: 8px; }
+.actions button { padding: 6px 12px; cursor: pointer; }
+.faded { opacity: 0.6; }
+.note { color: #7a3b3b; font-style: italic; }
+.replace-box { margin-top: 12px; padding-top: 12px; border-top: 1px dashed #ccc; }
