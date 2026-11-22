@@ -13,4 +13,8 @@ class DecisionCreate(BaseModel):
 class Decision(DecisionCreate):
     id: int
     created_at: str
+    superseded_by: int | None = None
+
+class StatusUpdate(BaseModel):
+    status: Literal["proposed", "accepted"]
 

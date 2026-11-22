@@ -12,7 +12,7 @@ def get_connection():
             context TEXT NOT NULL,
             decision TEXT NOT NULL,
             status TEXT NOT NULL DEFAULT 'proposed',
-            created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+            created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP, superseded_by INTEGER REFERENCES decisions(id)
             )"""
     )
     return conn
